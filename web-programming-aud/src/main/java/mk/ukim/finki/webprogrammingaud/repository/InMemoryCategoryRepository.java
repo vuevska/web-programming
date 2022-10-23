@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryCategoryRepository {
-
     public List<Category> findAll() {
         return DataHolder.categories;
     }
@@ -25,7 +24,9 @@ public class InMemoryCategoryRepository {
     }
 
     public Optional<Category> findByName(String name) {
-        return DataHolder.categories.stream().filter(c -> c.getName().equals(name)).findFirst();
+        return DataHolder.categories.stream()
+                .filter(c -> c.getName().equals(name))
+                .findFirst();
     }
 
     public List<Category> search(String text) {
