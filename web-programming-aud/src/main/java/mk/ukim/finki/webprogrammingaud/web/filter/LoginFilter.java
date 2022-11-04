@@ -22,7 +22,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         User user = (User) request.getSession().getAttribute("user");
         String path = request.getServletPath();
-        if (!path.equals("/login") && !path.equals("/main.css") && user == null) {
+        if (!path.equals("/login") && !path.equals("/register") && !path.equals("/main.css") && user == null) {
             response.sendRedirect("/login");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
