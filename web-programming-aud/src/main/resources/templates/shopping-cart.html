@@ -56,9 +56,16 @@
 </nav>
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">WEB PROGRAMMING SHOP</h1>
+        <h3 class="jumbotron-heading">Shopping Cart for
+            <th:block th:if="${session.user != null}" th:text="${session.user.getUsername()}">
+            </th:block>
+        </h3>
     </div>
 </section>
+
+<div th:if="${hasError}">
+    <h5 class="text-danger text-center" th:text="${error}"></h5>
+</div>
 
 <div class="container mb-5">
     <div class="row">
@@ -79,32 +86,9 @@
                         <th th:text="${product.getPrice()}"></th>
                         <th th:text="${product.getManufacturer() != null} ? ${product.getManufacturer().getName()} : 'No Manufacturer'"></th>
                         <th th:text="${product.getCategory() != null} ? ${product.getCategory().getName()} : 'No Category'"></th>
-                        <td class="text-right">
-                            <form th:method="delete" th:action="@{'/products/delete/{id}' (id = ${product.getId()})}">
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash">Delete</i>
-                                </button>
-                            </form>
-                            <a class="btn btn-sm btn-info"
-                               th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}">
-                                <i class="fa fa-trash">Edit</i>
-                            </a>
-                          <form th:method="POST" th:action="@{'/shopping-cart/add-product/{id}' (id = ${product.getId()})}">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                              <i class="fa fa-trash">Add product to cart</i>
-                            </button>
-                          </form>
-                        </td>
                     </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="col mb-3">
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <a href="/products/add-form" class="btn btn-block btn-dark">Add new product</a>
-                </div>
             </div>
         </div>
     </div>
