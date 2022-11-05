@@ -1,0 +1,56 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>WP lab - Delivery Info</title>
+  <link href="/deliveryInfo.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <h1>Balloon Order page - Delivery information </h1>
+</header>
+<section>
+
+  <form th:action="@{/BalloonOrder}" th:method="POST">
+    <label for="clientName">Client Name:</label><br/>
+    <input type="text" id="clientName" name="clientName"/><br/>
+    <br/>
+    <label for="clientAddress">Delivery Address:</label><br/>
+    <textarea cols="40" rows="3" id="clientAddress" name="clientAddress"></textarea>
+    <br/>
+    <div th:if="${hasOrderError}" class="error">
+      <div th:text="${hasOrderErrorText}"></div>
+    </div>
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+</section>
+<aside>
+  <table>
+    <tr>
+      <th colspan="2">
+        Your Order Status
+      </th>
+    </tr>
+
+    <tr>
+      <td><b>Balloon Type </b></td>
+      <td>
+        <th:block th:if="${session.color != null}">
+          <div th:text="${session.color}"></div>
+        </th:block>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Balloon Size </b></td>
+      <td>
+        <th:block th:if="${session.size != null}">
+          <div th:text="${session.size}"></div>
+        </th:block>
+      </td>
+    </tr>
+  </table>
+
+</aside>
+</body>
+</html>

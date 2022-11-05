@@ -1,0 +1,31 @@
+body {
+    width: 800px;
+    margin: auto;
+}
+table {
+    width: 500px;
+    margin: 30px auto auto;
+}
+table, td, th {
+    border: 1px solid black;
+    padding: 3px 2px;
+}
+
+#logout {
+    width: 100px;
+    margin: 40px auto auto;
+}
+
+#logout > a {
+    color: red;
+    text-decoration: none;
+}
+
+#logout > a:hover {
+    font-size: 18px;
+}
+
+h1 {
+    width: 450px;
+    margin: auto;
+}

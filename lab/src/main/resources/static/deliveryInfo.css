@@ -1,0 +1,40 @@
+body {
+    width: 800px;
+    margin: auto;
+}
+table {
+    width: 100%;
+    margin-left: -100px;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding: 3px 2px;
+    margin-top: 30px;
+}
+
+section {
+    float: left;
+    margin: 0 1.5%;
+    width: 63%;
+}
+
+aside {
+    float: right;
+    margin: 0 1.5%;
+    width: 30%;
+}
+
+h1 {
+    width: 600px;
+    margin: auto;
+}
+
+form {
+    width: 350px;
+    margin: 30px auto auto;
+}
+
+.error {
+    color: red;
+}

@@ -1,0 +1,71 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>WP lab - Confirmation Info</title>
+  <link href="/confirmationInfo.css" rel="stylesheet">
+</head>
+<body>
+<section>
+  <header>
+    <h1>Balloon Order page - Order confirmation </h1>
+  </header>
+  <table>
+    <tr>
+      <th colspan="2">
+        Your Order Status
+      </th>
+    </tr>
+    <tr>
+      <td><b>Client Name </b></td>
+      <td>
+        <div th:text="${session.clientName}"></div>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Client Address </b></td>
+      <td>
+        <div th:text="${session.clientAddress}"></div>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Client IP Address</b></td>
+      <td>
+        <div th:text="${IPAddress}"></div>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Client Browser</b></td>
+      <td>
+        <div th:text="${clientAgent}"></div>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Balloon Color </b></td>
+      <td>
+        <div th:text="${session.color}"></div>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Balloon Size </b></td>
+      <td>
+        <div th:text="${session.size}"></div>
+      </td>
+    </tr>
+  </table>
+  <div id="logout">
+    <a href="/Logout">Log out</a>
+  </div>
+
+  <div>
+    Number of orders:<span th:text="${#servletContext.getAttribute('numberOfOrders')}"></span>
+  </div>
+<!--<div>
+  <th:block th:text="${session.order.clientName}"></th:block>
+  <th:block th:text="${session.order.clientAddress}"></th:block>
+  <th:block th:text="${session.order.balloonSize}"></th:block>
+  <th:block th:text="${session.order.balloonColor}"></th:block>
+</div>-->
+
+</section>
+</body>
+</html>
