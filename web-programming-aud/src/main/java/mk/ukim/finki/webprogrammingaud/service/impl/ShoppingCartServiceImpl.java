@@ -1,9 +1,9 @@
 package mk.ukim.finki.webprogrammingaud.service.impl;
 
-import mk.ukim.finki.webprogrammingaud.exceptions.ProductAlreadyInShoppingCartException;
-import mk.ukim.finki.webprogrammingaud.exceptions.ProductNotFoundException;
-import mk.ukim.finki.webprogrammingaud.exceptions.ShoppingCartNotFound;
-import mk.ukim.finki.webprogrammingaud.exceptions.UserNotFoundException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.ProductAlreadyInShoppingCartException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.ProductNotFoundException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.ShoppingCartNotFound;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.UserNotFoundException;
 import mk.ukim.finki.webprogrammingaud.model.Product;
 import mk.ukim.finki.webprogrammingaud.model.ShoppingCart;
 import mk.ukim.finki.webprogrammingaud.model.User;
@@ -15,7 +15,6 @@ import mk.ukim.finki.webprogrammingaud.service.ShoppingCartService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {

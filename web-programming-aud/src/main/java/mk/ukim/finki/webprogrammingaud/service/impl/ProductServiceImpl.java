@@ -1,7 +1,7 @@
 package mk.ukim.finki.webprogrammingaud.service.impl;
 
-import mk.ukim.finki.webprogrammingaud.exceptions.CategoryNotFoundException;
-import mk.ukim.finki.webprogrammingaud.exceptions.ManufacturerNotFoundException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.CategoryNotFoundException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.ManufacturerNotFoundException;
 import mk.ukim.finki.webprogrammingaud.model.Category;
 import mk.ukim.finki.webprogrammingaud.model.Manufacturer;
 import mk.ukim.finki.webprogrammingaud.model.Product;

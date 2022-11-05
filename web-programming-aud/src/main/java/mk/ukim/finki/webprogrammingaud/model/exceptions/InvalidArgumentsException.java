@@ -1,4 +1,4 @@
-package mk.ukim.finki.webprogrammingaud.exceptions;
+package mk.ukim.finki.webprogrammingaud.model.exceptions;
 
 public class InvalidArgumentsException extends RuntimeException{
     public InvalidArgumentsException() {

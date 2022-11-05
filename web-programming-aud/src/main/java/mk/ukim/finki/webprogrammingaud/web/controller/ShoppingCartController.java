@@ -1,4 +1,4 @@
-package mk.ukim.finki.webprogrammingaud.controller;
+package mk.ukim.finki.webprogrammingaud.web.controller;
 
 import mk.ukim.finki.webprogrammingaud.model.ShoppingCart;
 import mk.ukim.finki.webprogrammingaud.model.User;

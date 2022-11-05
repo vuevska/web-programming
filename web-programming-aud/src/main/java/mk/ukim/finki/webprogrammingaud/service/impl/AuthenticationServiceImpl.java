@@ -1,8 +1,8 @@
 package mk.ukim.finki.webprogrammingaud.service.impl;
 
-import mk.ukim.finki.webprogrammingaud.exceptions.InvalidArgumentsException;
-import mk.ukim.finki.webprogrammingaud.exceptions.InvalidUserCredentialsException;
-import mk.ukim.finki.webprogrammingaud.exceptions.PasswordsDoNotMatchException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.InvalidArgumentsException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.InvalidUserCredentialsException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.webprogrammingaud.model.User;
 import mk.ukim.finki.webprogrammingaud.repository.InMemoryUserRepository;
 import mk.ukim.finki.webprogrammingaud.service.AuthenticationService;

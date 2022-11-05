@@ -1,4 +1,4 @@
-package mk.ukim.finki.webprogrammingaud.exceptions;
+package mk.ukim.finki.webprogrammingaud.model.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

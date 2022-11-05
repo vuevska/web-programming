@@ -1,7 +1,7 @@
-package mk.ukim.finki.webprogrammingaud.controller;
+package mk.ukim.finki.webprogrammingaud.web.controller;
 
-import mk.ukim.finki.webprogrammingaud.exceptions.InvalidArgumentsException;
-import mk.ukim.finki.webprogrammingaud.exceptions.PasswordsDoNotMatchException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.InvalidArgumentsException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.webprogrammingaud.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

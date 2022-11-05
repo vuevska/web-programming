@@ -1,6 +1,6 @@
-package mk.ukim.finki.webprogrammingaud.controller;
+package mk.ukim.finki.webprogrammingaud.web.controller;
 
-import mk.ukim.finki.webprogrammingaud.exceptions.InvalidUserCredentialsException;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.InvalidUserCredentialsException;
 import mk.ukim.finki.webprogrammingaud.model.User;
 import mk.ukim.finki.webprogrammingaud.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
