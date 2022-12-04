@@ -3,49 +3,72 @@
   <meta charset="utf-8">
   <title>Balloon Order page - Balloon Size</title>
   <link href="/selectBalloonSize.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+        integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+        crossorigin="anonymous">
+  <style>
+    .container {
+      width: 550px;
+      margin: auto;
+    }
+    h2 {
+      width: 250px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Balloon Order page - Select Balloon Size </h1>
-</header>
+<div class="container">
+  <header>
+    <h1>Balloon Order page - Select Balloon Size </h1>
+  </header>
 
-<section>
-  <h2>Choose balloon size:</h2>
-  <form th:action="@{/selectBalloon}" th:method="POST">
-    <label>
-      <input type="radio" name="size" value="Small">
-    </label> Small <br/>
-    <label>
-      <input type="radio" name="size" value="Medium">
-    </label> Medium <br/>
-    <label>
-      <input type="radio" name="size" value="Big">
-    </label> Big <br/>
-    <label>
-      <input type="radio" name="size" value="Extra Big">
-    </label> Extra Big <br/>
-    <!--<div th:if="${session.sizeError}" class="error">
-      <div th:text="${session.sizeErrorText}"></div>
-    </div>-->
-    <br/>
-    <input type="submit" value="Submit">
-  </form>
+  <section>
+    <h2>Choose balloon size:</h2>
+    <form th:action="@{/selectBalloon}" th:method="POST">
+      <label>
+        <input type="radio" name="size" value="Small">
+      </label> Small <br/>
+      <label>
+        <input type="radio" name="size" value="Medium">
+      </label> Medium <br/>
+      <label>
+        <input type="radio" name="size" value="Big">
+      </label> Big <br/>
+      <label>
+        <input type="radio" name="size" value="Extra Big">
+      </label> Extra Big <br/>
+      <!--<div th:if="${session.sizeError}" class="error">
+        <div th:text="${session.sizeErrorText}"></div>
+      </div>-->
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
 
-</section>
-<aside>
-  <table>
-    <tr>
-      <th colspan="2">
-        Your Order Status
-      </th>
-    </tr>
-    <tr>
-      <td><b>Balloon Type </b></td>
-      <td>
-        <th:block th:text="${session.color}"></th:block>
-      </td>
-    </tr>
-  </table>
-</aside>
+  </section>
+  <aside>
+    <table class="pure-table">
+      <thead>
+      <tr>
+        <th colspan="2">
+          Your Order Status
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><b>Balloon Type </b></td>
+        <td>
+          <th:block th:text="${session.color}"></th:block>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+  </aside>
+</div>
 </body>
 </html>

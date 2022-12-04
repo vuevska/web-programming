@@ -1,3 +1,4 @@
+/**
 package mk.finki.ukim.mk.lab.web.filter;
 
 import javax.servlet.*;
@@ -22,7 +23,7 @@ public class SelectedFilter implements Filter {
         String balloonColor = (String) request.getSession().getAttribute("color");
         String colorErrorText = "Please select a balloon type!";
 
-        if (balloonColor == null && !path.equals("") && !path.equals("/listBalloons.css")) {
+        if (balloonColor == null && !path.equals("") && !path.equals("/listBalloons.css") && !path.contains("/balloons")) {
             request.getSession().setAttribute("colorError", true);
             request.getSession().setAttribute("colorErrorText", colorErrorText);
             response.sendRedirect("/");
@@ -36,3 +37,4 @@ public class SelectedFilter implements Filter {
 
     }
 }
+*/

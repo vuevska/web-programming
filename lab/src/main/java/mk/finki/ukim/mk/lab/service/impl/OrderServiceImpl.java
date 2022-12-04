@@ -6,6 +6,9 @@ import mk.finki.ukim.mk.lab.repository.OrderRepository;
 import mk.finki.ukim.mk.lab.service.OrderService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -22,6 +25,11 @@ public class OrderServiceImpl implements OrderService {
         }
         Order order = new Order(balloonColor, balloonSize, clientName, address, 0L);
         return orderRepository.addNewOrder(order);
+    }
+
+    @Override
+    public List<Order> findAll() {
+        return orderRepository.findAll();
     }
 
 }

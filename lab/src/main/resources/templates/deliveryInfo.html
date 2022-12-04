@@ -1,56 +1,78 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>WP lab - Delivery Info</title>
-  <link href="/deliveryInfo.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>WP lab - Delivery Info</title>
+    <link href="/deliveryInfo.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+          integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            width: 550px;
+            margin: auto;
+        }
+
+        h2 {
+            width: 250px;
+            margin: auto;
+        }
+        table {
+            width: 250px;
+            margin: 40px auto auto;
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1>Balloon Order page - Delivery information </h1>
-</header>
-<section>
+<div class="container">
+    <header>
+        <h1>Balloon Order page - Delivery information </h1>
+    </header>
+    <section>
+        <form th:action="@{/BalloonOrder}" th:method="POST">
+            <label for="clientName">Client Name:</label><br/>
+            <input type="text" id="clientName" name="clientName"/><br/>
+            <br/>
+            <label for="clientAddress">Delivery Address:</label><br/>
+            <textarea cols="40" rows="3" id="clientAddress" name="clientAddress"></textarea>
+            <br/>
+            <div th:if="${hasOrderError}" class="error">
+                <div th:text="${hasOrderErrorText}"></div>
+            </div>
+            <br/>
+            <label for="date"></label><input type="datetime-local" id="date">
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    <aside>
+        <table class="pure-table">
+            <thead>
+            <tr>
+                <th colspan="2">
+                    Your Order Status
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><b>Balloon Type </b></td>
+                <td>
+                    <th:block th:if="${session.color != null}">
+                        <div th:text="${session.color}"></div>
+                    </th:block>
+                </td>
+            </tr>
+            <tr class="pure-table-odd">
+                <td><b>Balloon Size </b></td>
+                <td>
+                    <th:block th:if="${session.size != null}">
+                        <div th:text="${session.size}"></div>
+                    </th:block>
+                </td>
+            </tr>
+            </tbody>
 
-  <form th:action="@{/BalloonOrder}" th:method="POST">
-    <label for="clientName">Client Name:</label><br/>
-    <input type="text" id="clientName" name="clientName"/><br/>
-    <br/>
-    <label for="clientAddress">Delivery Address:</label><br/>
-    <textarea cols="40" rows="3" id="clientAddress" name="clientAddress"></textarea>
-    <br/>
-    <div th:if="${hasOrderError}" class="error">
-      <div th:text="${hasOrderErrorText}"></div>
-    </div>
-    <br/>
-    <input type="submit" value="Submit">
-  </form>
-
-</section>
-<aside>
-  <table>
-    <tr>
-      <th colspan="2">
-        Your Order Status
-      </th>
-    </tr>
-
-    <tr>
-      <td><b>Balloon Type </b></td>
-      <td>
-        <th:block th:if="${session.color != null}">
-          <div th:text="${session.color}"></div>
-        </th:block>
-      </td>
-    </tr>
-    <tr>
-      <td><b>Balloon Size </b></td>
-      <td>
-        <th:block th:if="${session.size != null}">
-          <div th:text="${session.size}"></div>
-        </th:block>
-      </td>
-    </tr>
-  </table>
-
-</aside>
+        </table>
+    </aside>
+</div>
 </body>
 </html>

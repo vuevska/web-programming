@@ -1,71 +1,106 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>WP lab - Confirmation Info</title>
-  <link href="/confirmationInfo.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>WP lab - Confirmation Info</title>
+    <link href="/confirmationInfo.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+          integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            width: 550px;
+            margin: auto;
+        }
+
+        h2 {
+            width: 250px;
+            margin: auto;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 23px;
+            margin: 30px auto auto;
+        }
+
+        #num-orders {
+            border: 2px solid #cbcbcb;
+            width: 150px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #cbcbcb;
+        }
+    </style>
 </head>
 <body>
-<section>
-  <header>
-    <h1>Balloon Order page - Order confirmation </h1>
-  </header>
-  <table>
-    <tr>
-      <th colspan="2">
-        Your Order Status
-      </th>
-    </tr>
-    <tr>
-      <td><b>Client Name </b></td>
-      <td>
-        <div th:text="${session.clientName}"></div>
-      </td>
-    </tr>
-    <tr>
-      <td><b>Client Address </b></td>
-      <td>
-        <div th:text="${session.clientAddress}"></div>
-      </td>
-    </tr>
-    <tr>
-      <td><b>Client IP Address</b></td>
-      <td>
-        <div th:text="${IPAddress}"></div>
-      </td>
-    </tr>
-    <tr>
-      <td><b>Client Browser</b></td>
-      <td>
-        <div th:text="${clientAgent}"></div>
-      </td>
-    </tr>
-    <tr>
-      <td><b>Balloon Color </b></td>
-      <td>
-        <div th:text="${session.color}"></div>
-      </td>
-    </tr>
-    <tr>
-      <td><b>Balloon Size </b></td>
-      <td>
-        <div th:text="${session.size}"></div>
-      </td>
-    </tr>
-  </table>
-  <div id="logout">
-    <a href="/Logout">Log out</a>
-  </div>
+<div class="container">
+    <section>
+        <header>
+            <h1>Balloon Order page - Order confirmation </h1>
+        </header>
+        <table class="pure-table">
+            <thead>
+            <tr>
+                <th colspan="2">
+                    Your Order Status
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="pure-table-odd">
+                <td><b>Client Name </b></td>
+                <td>
+                    <div th:text="${session.clientName}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Client Address </b></td>
+                <td>
+                    <div th:text="${session.clientAddress}"></div>
+                </td>
+            </tr>
+            <tr class="pure-table-odd">
+                <td><b>Client IP Address</b></td>
+                <td>
+                    <div th:text="${IPAddress}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Client Browser</b></td>
+                <td>
+                    <div th:text="${clientAgent}"></div>
+                </td>
+            </tr>
+            <tr class="pure-table-odd">
+                <td><b>Balloon Color </b></td>
+                <td>
+                    <div th:text="${session.color}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Balloon Size </b></td>
+                <td>
+                    <div th:text="${session.size}"></div>
+                </td>
+            </tr>
+            </tbody>
 
-  <div>
-    Number of orders:<span th:text="${#servletContext.getAttribute('numberOfOrders')}"></span>
-  </div>
-<!--<div>
-  <th:block th:text="${session.order.clientName}"></th:block>
-  <th:block th:text="${session.order.clientAddress}"></th:block>
-  <th:block th:text="${session.order.balloonSize}"></th:block>
-  <th:block th:text="${session.order.balloonColor}"></th:block>
-</div>-->
+        </table>
+        <div id="logout">
+            <a href="/Logout">Log out</a>
+        </div>
 
-</section>
+        <div id="num-orders">
+            Number of orders:<span th:text="${#servletContext.getAttribute('numberOfOrders')}"
+                                   style="margin-left: 8px"></span>
+        </div>
+        <a href="/orders">Orders</a>
+    </section>
+</div>
 </body>
 </html>

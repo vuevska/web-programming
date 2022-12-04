@@ -3,6 +3,8 @@ package mk.finki.ukim.mk.lab.web.servlet;
 import mk.finki.ukim.mk.lab.model.Order;
 import mk.finki.ukim.mk.lab.model.exceptions.CanNotPlaceOrderException;
 import mk.finki.ukim.mk.lab.service.impl.OrderServiceImpl;
+import org.attoparser.IMarkupParser;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "balloon-order-servlet", urlPatterns = "/BalloonOrder")
 public class BalloonOrderServlet extends HttpServlet {
@@ -39,10 +43,9 @@ public class BalloonOrderServlet extends HttpServlet {
         req.getSession().setAttribute("clientAddress", clientAddress);
         String color = (String) req.getSession().getAttribute("color");
         String size = (String) req.getSession().getAttribute("size");
-
         Order order = null;
         try {
-            order = orderService.placeOrder(size, color, clientName, clientAddress);
+            order = orderService.placeOrder(color, size, clientName, clientAddress);
         } catch (CanNotPlaceOrderException ex) {
             WebContext webContext = new WebContext(req, resp, req.getServletContext());
             webContext.setVariable("hasOrderError", true);

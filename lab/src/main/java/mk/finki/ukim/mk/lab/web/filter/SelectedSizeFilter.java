@@ -1,3 +1,4 @@
+/**
 package mk.finki.ukim.mk.lab.web.filter;
 
 import javax.servlet.*;
@@ -34,3 +35,4 @@ public class SelectedSizeFilter implements Filter {
         Filter.super.destroy();
     }
 }
+*/

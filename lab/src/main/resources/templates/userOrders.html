@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>User Orders</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+          integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            width: 500px;
+            margin: 50px auto auto;
+        }
+
+        table {
+            margin: auto;
+            padding: 10px;
+        }
+
+        th {
+            text-align: center;
+            font-size: 15px;
+            padding-bottom: 17px;
+        }
+
+        h2 {
+            width: 80px;
+            margin: auto auto 50px;
+        }
+
+        .link {
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-  <p>User order for <div th:text="${session.clientName}"></div></p>
+<div class="container">
+    <div>
+        <h2>Orders</h2>
+    </div>
+    <table class="pure-table">
+        <thead>
+        <tr>
+            <th>Client Name</th>
+            <th>Client Address</th>
+            <th>Balloon Color</th>
+            <th>Balloon Size</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.getClientName()}"></td>
+            <td th:text="${order.getClientAddress()}"></td>
+            <td th:text="${order.getBalloonColor()}"></td>
+            <td th:text="${order.getBalloonSize()}"></td>
+            <td th:text="${order.getOrderId()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="link">
+        <a href="/balloons">Back</a>
+    </div>
+</div>
 
 </body>
 </html>
