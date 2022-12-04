@@ -22,7 +22,7 @@ public class DataHolder {
 
     public static List<ShoppingCart> shoppingCarts = new ArrayList<>();
 
-    @PostConstruct
+    /*@PostConstruct
     public void init() {
         categories.add(new Category("Software", "Software Category"));
         categories.add(new Category("Books", "Books Category"));
@@ -38,5 +38,5 @@ public class DataHolder {
         products.add(new Product("Basketball", 120.50, 5, category, manufacturer));
         products.add(new Product("Volleyball", 100.50, 4, category, manufacturer));
         products.add(new Product("Tennis ball", 90.30, 10, category, manufacturer));
-    }
+    }*/
 }

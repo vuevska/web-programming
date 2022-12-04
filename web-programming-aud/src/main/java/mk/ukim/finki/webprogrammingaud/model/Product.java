@@ -10,6 +10,7 @@ import java.util.List;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
@@ -19,10 +20,7 @@ public class Product {
     @ManyToOne
     private Manufacturer manufacturer;
 
-    @ManyToMany(mappedBy = "products")
-    private List<ShoppingCart> carts;
     public Product(String name, Double price, Integer quantity, Category category, Manufacturer manufacturer) {
-        this.id = (long) (Math.random() * 1000);
         this.name = name;
         this.price = price;
         this.quantity = quantity;

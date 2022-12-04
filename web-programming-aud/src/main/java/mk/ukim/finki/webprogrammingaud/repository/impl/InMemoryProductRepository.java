@@ -1,4 +1,4 @@
-package mk.ukim.finki.webprogrammingaud.repository;
+package mk.ukim.finki.webprogrammingaud.repository.impl;
 
 import mk.ukim.finki.webprogrammingaud.bootstrap.DataHolder;
 import mk.ukim.finki.webprogrammingaud.model.Category;

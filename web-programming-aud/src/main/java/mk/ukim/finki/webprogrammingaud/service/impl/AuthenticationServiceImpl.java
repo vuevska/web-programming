@@ -4,15 +4,17 @@ import mk.ukim.finki.webprogrammingaud.model.exceptions.InvalidArgumentsExceptio
 import mk.ukim.finki.webprogrammingaud.model.exceptions.InvalidUserCredentialsException;
 import mk.ukim.finki.webprogrammingaud.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.webprogrammingaud.model.User;
-import mk.ukim.finki.webprogrammingaud.repository.InMemoryUserRepository;
+import mk.ukim.finki.webprogrammingaud.model.exceptions.UsernameAlreadyExistsException;
+import mk.ukim.finki.webprogrammingaud.repository.impl.InMemoryUserRepository;
+import mk.ukim.finki.webprogrammingaud.repository.jpa.UserRepository;
 import mk.ukim.finki.webprogrammingaud.service.AuthenticationService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    private final InMemoryUserRepository userRepository;
-    public AuthenticationServiceImpl(InMemoryUserRepository userRepository) {
+    private final UserRepository userRepository;
+    public AuthenticationServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -34,7 +36,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (!password.equals(repeatPassword)) {
             throw new PasswordsDoNotMatchException();
         }
+        if(!this.userRepository.findByUsername(username).isEmpty()
+                || this.userRepository.findByUsername(username).isPresent())
+            throw new UsernameAlreadyExistsException(username);
         User user = new User(username, password, name, surname);
-        return userRepository.saveOrUpdate(user);
+        return userRepository.save(user);
     }
 }
