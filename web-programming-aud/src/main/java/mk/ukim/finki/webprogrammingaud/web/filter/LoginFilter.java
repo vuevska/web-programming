@@ -1,6 +1,7 @@
 package mk.ukim.finki.webprogrammingaud.web.filter;
 
 import mk.ukim.finki.webprogrammingaud.model.User;
+import org.springframework.context.annotation.Profile;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter
+@Profile("servlet")
 public class LoginFilter implements Filter {
 
     @Override
@@ -22,7 +24,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         User user = (User) request.getSession().getAttribute("user");
         String path = request.getServletPath();
-        if (!path.equals("/login") && !path.equals("/register") && !path.equals("/main.css") && user == null) {
+        if (!path.equals("/login") && !path.equals("/h2") && !path.equals("/register") && !path.equals("/main.css") && user == null) {
             response.sendRedirect("/login");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

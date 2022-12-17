@@ -25,8 +25,8 @@ public class ShoppingCartController {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
-        User user = (User) request.getSession().getAttribute("user");
-        ShoppingCart shoppingCart = this.shoppingCartService.getActiveShoppingCart(user.getUsername());
+        String username = request.getRemoteUser();
+        ShoppingCart shoppingCart = this.shoppingCartService.getActiveShoppingCart(username);
         model.addAttribute("products", this.shoppingCartService.listAllProductsInShoppingCart(shoppingCart.getId()));
         model.addAttribute("bodyContent", "shopping-cart");
         return "master-template";
@@ -35,8 +35,8 @@ public class ShoppingCartController {
     @PostMapping("/add-product/{id}")
     public String AddProductToShoppingCart(@PathVariable Long id, HttpServletRequest request) {
         try {
-            User user = (User) request.getSession().getAttribute("user");
-            ShoppingCart shoppingCart = this.shoppingCartService.addProductToShoppingCart(user.getUsername(), id);
+            String username = request.getRemoteUser();
+            ShoppingCart shoppingCart = this.shoppingCartService.addProductToShoppingCart(username, id);
             return "redirect:/shopping-cart";
         } catch (RuntimeException exception) {
             return "redirect:/shopping-cart?error=" + exception.getMessage();
