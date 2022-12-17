@@ -69,12 +69,17 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String saveProduct(@RequestParam String name,
+    public String saveProduct(@RequestParam(required = false) Long id,
+                              @RequestParam String name,
                               @RequestParam Double price,
                               @RequestParam Integer quantity,
                               @RequestParam Long category,
                               @RequestParam Long manufacturer) {
-        this.productService.save(name, price, quantity, category, manufacturer);
+        if (id != null) {
+            this.productService.edit(id, name, price, quantity, category, manufacturer);
+        } else {
+            this.productService.save(name, price, quantity, category, manufacturer);
+        }
         return "redirect:/products";
     }
 
