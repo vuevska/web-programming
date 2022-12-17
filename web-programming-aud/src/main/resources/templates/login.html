@@ -13,8 +13,8 @@
                        required="required">
             </p>
 
-            <div th:if="${hasError}" class="error">
-                <div th:text="${error}" class="text-danger"></div>
+            <div class="error">
+                <div th:text="${param.error}" class="text-danger"></div>
             </div>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
