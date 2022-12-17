@@ -3,6 +3,8 @@ package mk.finki.ukim.mk.lab.web.controller;
 import mk.finki.ukim.mk.lab.model.Balloon;
 import mk.finki.ukim.mk.lab.service.BalloonService;
 import mk.finki.ukim.mk.lab.service.ManufacturerService;
+import mk.finki.ukim.mk.lab.service.OrderService;
+import mk.finki.ukim.mk.lab.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,12 @@ public class BalloonController {
 
     private final BalloonService balloonService;
     private final ManufacturerService manufacturerService;
-
+    //private final OrderService orderService;
 
     public BalloonController(BalloonService balloonService, ManufacturerService manufacturerService) {
         this.balloonService = balloonService;
-
         this.manufacturerService = manufacturerService;
+        //this.orderService = orderService;
     }
 
     @GetMapping
@@ -53,10 +55,15 @@ public class BalloonController {
 
     //add balloon
     @PostMapping("/add")
-    public String saveBalloon(@RequestParam String color,
+    public String saveBalloon(@RequestParam(required = false) Long id,
+                              @RequestParam String color,
                               @RequestParam String description,
                               @RequestParam Long manufacturer) {
-        this.balloonService.saveBalloon(color, description, manufacturer);
+        if (id != null) {
+            this.balloonService.edit(id, color, description, manufacturer);
+        } else {
+            this.balloonService.saveBalloon(color, description, manufacturer);
+        }
         return "redirect:/balloons";
     }
 
@@ -80,15 +87,9 @@ public class BalloonController {
         return "redirect:/balloons";
     }
 
-    // show orders
-    @GetMapping("/orders")
-    public String getAllOrdersPage() {
-        return "redirect:/userOrders";
-    }
-
     @ModelAttribute
     public void populateModel(Model model) {
         model.addAttribute("manufacturers", this.manufacturerService.findAll());
+        //model.addAttribute("users", this.userService.listAllUsers());
     }
-
 }

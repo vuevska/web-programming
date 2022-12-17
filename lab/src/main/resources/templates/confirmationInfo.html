@@ -43,6 +43,9 @@
         <header>
             <h1>Balloon Order page - Order confirmation </h1>
         </header>
+        <!--<div>
+            <a href="/orders">Orders</a>
+        </div>-->
         <table class="pure-table">
             <thead>
             <tr>
@@ -52,18 +55,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="pure-table-odd">
+            <tr>
                 <td><b>Client Name </b></td>
                 <td>
-                    <div th:text="${session.clientName}"></div>
+                    <div th:text="${session.user.getUsername()}"></div>
                 </td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td><b>Client Address </b></td>
                 <td>
                     <div th:text="${session.clientAddress}"></div>
                 </td>
-            </tr>
+            </tr>-->
             <tr class="pure-table-odd">
                 <td><b>Client IP Address</b></td>
                 <td>
@@ -91,14 +94,14 @@
             </tbody>
 
         </table>
-        <div id="logout">
+        <!--<div id="logout">
             <a href="/Logout">Log out</a>
-        </div>
+        </div>-->
 
-        <div id="num-orders">
+        <!--<div id="num-orders">
             Number of orders:<span th:text="${#servletContext.getAttribute('numberOfOrders')}"
                                    style="margin-left: 8px"></span>
-        </div>
+        </div>-->
         <a href="/orders">Orders</a>
     </section>
 </div>

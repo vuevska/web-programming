@@ -1,9 +1,7 @@
 package mk.finki.ukim.mk.lab.bootstrap;
 
 import lombok.Getter;
-import mk.finki.ukim.mk.lab.model.Balloon;
-import mk.finki.ukim.mk.lab.model.Manufacturer;
-import mk.finki.ukim.mk.lab.model.Order;
+import mk.finki.ukim.mk.lab.model.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,10 +11,12 @@ import java.util.List;
 @Component
 @Getter
 public class DataHolder {
-    public static List<Balloon> balloonList;
-    public static List<Order> orderList;
-    public static List<Manufacturer> manufacturers;
-    @PostConstruct
+    public static List<Balloon> balloonList = new ArrayList<>();
+    public static List<Order> orderList = new ArrayList<>();
+    public static List<Manufacturer> manufacturers = new ArrayList<>();
+    public static List<ShoppingCart> shoppingCarts = new ArrayList<>();
+    public static List<User> users = new ArrayList<>();
+    /*@PostConstruct
     public void init() {
         balloonList = new ArrayList<>();
         manufacturers = new ArrayList<>();
@@ -44,5 +44,5 @@ public class DataHolder {
         balloonList.add(new Balloon("Whitle", "Big", PartyMaker));
 
         orderList = new ArrayList<>();
-    }
+    }*/
 }

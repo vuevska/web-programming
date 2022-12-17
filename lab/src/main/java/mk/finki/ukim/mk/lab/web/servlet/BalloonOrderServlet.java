@@ -1,6 +1,7 @@
 package mk.finki.ukim.mk.lab.web.servlet;
 
 import mk.finki.ukim.mk.lab.model.Order;
+import mk.finki.ukim.mk.lab.model.User;
 import mk.finki.ukim.mk.lab.model.exceptions.CanNotPlaceOrderException;
 import mk.finki.ukim.mk.lab.service.impl.OrderServiceImpl;
 import org.attoparser.IMarkupParser;
@@ -37,15 +38,17 @@ public class BalloonOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String clientName = req.getParameter("clientName");
-        req.getSession().setAttribute("clientName", clientName);
-        String clientAddress = req.getParameter("clientAddress");
-        req.getSession().setAttribute("clientAddress", clientAddress);
+        //String clientName = req.getParameter("clientName");
+        //req.getSession().setAttribute("clientName", clientName);
+        //String clientAddress = req.getParameter("clientAddress");
+        //req.getSession().setAttribute("clientAddress", clientAddress);
         String color = (String) req.getSession().getAttribute("color");
         String size = (String) req.getSession().getAttribute("size");
+        String dateCreated = (String) req.getSession().getAttribute("dateCreated");
+        User user = (User) req.getSession().getAttribute("user");
         Order order = null;
         try {
-            order = orderService.placeOrder(color, size, clientName, clientAddress);
+            order = orderService.placeOrder(color, size, LocalDateTime.parse(dateCreated), user.getId());
         } catch (CanNotPlaceOrderException ex) {
             WebContext webContext = new WebContext(req, resp, req.getServletContext());
             webContext.setVariable("hasOrderError", true);

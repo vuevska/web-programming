@@ -82,6 +82,9 @@
         <h1>Welcome to our Balloon Shop App</h1>
     </header>
     <main>
+        <div>
+            <a href="/orders">Orders</a>
+        </div>
         <h2>Choose balloon type:</h2>
         <form id="submit-color-form" th:action="@{'/balloons/save-color'}" th:method="post"></form>
         <table class="table table-striped pure-table">
@@ -97,7 +100,7 @@
             <tr th:each="balloon :${balloons}">
                 <td>
                     <label>
-                        <input type="radio" name="color" th:value="${balloon.getName()}" form="submit-color-form">
+                        <input type="radio" name="color" th:id="${balloon.getId()}" th:value="${balloon.getName()}" form="submit-color-form">
                     </label>
                 </td>
                 <td th:text="${balloon.getName()}"></td>
@@ -110,7 +113,7 @@
                     </a>
                 </td>
                 <td>
-                    <form id="delete-form" th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}" th:method="delete">
+                    <form id="delete-form" th:method="delete" th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">
                         <button type="submit" class="btn btn-danger delete-balloon" form="delete-form">Delete</button>
                     </form>
                 </td>

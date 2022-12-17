@@ -1,7 +1,7 @@
 package mk.finki.ukim.mk.lab.service.impl;
 
 import mk.finki.ukim.mk.lab.model.Manufacturer;
-import mk.finki.ukim.mk.lab.repository.ManufacturerRepository;
+import mk.finki.ukim.mk.lab.repository.jpa.ManufacturerRepository;
 import mk.finki.ukim.mk.lab.service.ManufacturerService;
 import org.springframework.stereotype.Service;
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OrderRepository {
+public class InMemoryOrderRepository {
     public Order addNewOrder(Order order) {
         DataHolder.orderList.add(order);
         return order;

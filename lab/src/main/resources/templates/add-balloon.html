@@ -18,10 +18,11 @@
 <div class="container">
     <div class="row">
         <div>
-            <h1>Edit Balloon</h1>
+            <h1>Modify Balloons</h1>
         </div>
         <div class="col-md-5">
             <form action="/balloons/add" method="POST">
+                <input type="hidden" id="id" name="id" th:value="(${balloon} != null ? ${balloon.getId()} : '')">
                 <div class="form-group">
                     <label for="color">Balloon name</label>
                     <input type="text"

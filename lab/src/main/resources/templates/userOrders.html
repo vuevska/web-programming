@@ -24,8 +24,7 @@
         }
 
         h2 {
-            width: 80px;
-            margin: auto auto 50px;
+            margin: auto auto 40px 100px;
         }
 
         .link {
@@ -36,30 +35,61 @@
 <body>
 <div class="container">
     <div>
-        <h2>Orders</h2>
+        <h2>Orders for <span th:text="${session.user.getFullName().getName()
+         + ' ' + session.user.getFullName().getSurname()}"></span></h2>
     </div>
     <table class="pure-table">
         <thead>
         <tr>
-            <th>Client Name</th>
-            <th>Client Address</th>
+            <!--<th>Client Name</th>-->
+            <!--<th>Client Address</th>-->
             <th>Balloon Color</th>
             <th>Balloon Size</th>
-            <th>Time</th>
+            <th>Date Created</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="order : ${orders}">
-            <td th:text="${order.getClientName()}"></td>
-            <td th:text="${order.getClientAddress()}"></td>
+            <!--<td th:text="${session.user.getUsername()}"></td>-->
+            <!--<td th:text="${order.user.getSurname()}"></td>-->
             <td th:text="${order.getBalloonColor()}"></td>
             <td th:text="${order.getBalloonSize()}"></td>
-            <td th:text="${order.getOrderId()}"></td>
+            <td th:text="${order.getDateCreated()}"></td>
         </tr>
         </tbody>
     </table>
+    <div>
+        <a href="/orders">Get All Orders</a>
+    </div>
+    <br>
+    <div>
+        <form th:action="@{'/orders'}" th:method="get">
+            <label for="from"> Filter From:</label><input type="datetime-local" name="from" id="from">
+            <br>
+            <label for="to">Filter To:</label><input type="datetime-local" name="to" id="to">
+            <br>
+            <input type="submit" value="Find Orders">
+            <br>
+        </form>
+        <br>
+
+        <form method="get" action="/orders">
+            <label>
+                <select name="userId" class="form-control">
+                    <option th:each="user : ${users}"
+                            th:value="${user.getId()}"
+                            th:text="${user.getUsername()}">
+                    </option>
+                </select>
+            </label>
+            <input type="submit" value="Filter Orders by User">
+        </form>
+
+    </div>
     <div class="link">
-        <a href="/balloons">Back</a>
+        <a href="/balloons">Home</a>
+        <br>
+        <a href="/logout">Log out</a>
     </div>
 </div>
 

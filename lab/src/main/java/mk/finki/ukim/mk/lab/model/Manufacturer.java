@@ -2,17 +2,28 @@ package mk.finki.ukim.mk.lab.model;
 
 import lombok.Data;
 
-@Data
-public class Manufacturer {
-    private Long id;
-    private String name;
-    private String country;
-    private String address;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Data
+@Table(name = "manufacturers")
+public class Manufacturer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private String country;
+    @Column(nullable = false)
+    private String address;
     public Manufacturer(String name, String country, String address) {
-        this.id = (long) (Math.random() * 100);
         this.name = name;
         this.country = country;
         this.address = address;
+    }
+    public Manufacturer() {
     }
 }

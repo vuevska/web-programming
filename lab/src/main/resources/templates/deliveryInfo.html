@@ -28,8 +28,8 @@
         <h1>Balloon Order page - Delivery information </h1>
     </header>
     <section>
-        <form th:action="@{/BalloonOrder}" th:method="POST">
-            <label for="clientName">Client Name:</label><br/>
+        <form action="/orders/place-order" method="post">
+            <!--<label for="clientName">Client Name:</label><br/>
             <input type="text" id="clientName" name="clientName"/><br/>
             <br/>
             <label for="clientAddress">Delivery Address:</label><br/>
@@ -38,9 +38,9 @@
             <div th:if="${hasOrderError}" class="error">
                 <div th:text="${hasOrderErrorText}"></div>
             </div>
-            <br/>
-            <label for="date"></label><input type="datetime-local" id="date">
-            <input type="submit" value="Submit">
+            <br/>-->
+            <label for="dateCreated"></label><input type="datetime-local" id="dateCreated" name="dateCreated">
+            <input type="submit" value="Place Order">
         </form>
     </section>
     <aside>
@@ -70,7 +70,6 @@
                 </td>
             </tr>
             </tbody>
-
         </table>
     </aside>
 </div>
