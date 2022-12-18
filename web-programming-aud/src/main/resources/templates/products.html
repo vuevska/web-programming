@@ -43,6 +43,7 @@
                                 </th:block>
 
                                 <form th:method="POST"
+                                      sec:authorize="isAuthenticated()"
                                       th:action="@{'/shopping-cart/add-product/{id}' (id = ${product.getId()})}">
                                     <button type="submit" class="btn btn-sm btn-primary">
                                         <i class="fa fa-trash">Add product to cart</i>
@@ -57,7 +58,7 @@
             <div class="col mb-3">
                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                     <div class="row">
-                        <div class="col-sm-12 col-md-12">
+                        <div class="col-sm-12 col-md-12" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a href="/products/add-form" class="btn btn-block btn-dark">Add new product</a>
                         </div>
                     </div>
