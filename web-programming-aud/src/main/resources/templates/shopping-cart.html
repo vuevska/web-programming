@@ -26,7 +26,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="product : ${products}">
+                        <tr th:each="product : ${products}" class="cart-item">
                             <th th:text="${product.getName()}"></th>
                             <th th:text="${product.getPrice()}"></th>
                             <th th:text="${product.getManufacturer() != null} ? ${product.getManufacturer().getName()} : 'No Manufacturer'"></th>
