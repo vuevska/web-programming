@@ -49,8 +49,8 @@ public class OrderController {
             model.addAttribute("error", error);
         }
         model.addAttribute("users", this.userService.listAllUsers());
-        User user = (User) request.getSession().getAttribute("user");
-        ShoppingCart shoppingCart = this.shoppingCartService.getActiveShoppingCart(user.getUsername());
+        String username = request.getRemoteUser();
+        ShoppingCart shoppingCart = this.shoppingCartService.getActiveShoppingCart(username);
         List<Order> orders = null;
         if (from == null || to == null) {
             orders = this.shoppingCartService.listAllOrdersInShoppingCart(shoppingCart.getId());
@@ -73,10 +73,11 @@ public class OrderController {
         String name = (String) request.getSession().getAttribute("color");
         String description = (String) request.getSession().getAttribute("size");
 
-        User user = (User) request.getSession().getAttribute("user");
+        String username = request.getRemoteUser();
+        User user = (User) this.userService.loadUserByUsername(username);
         Order order = this.orderService.placeOrder(name, description, dateCreated, user.getId());
 
-        this.shoppingCartService.addOrderToShoppingCart(user.getUsername(), order.getId());
-        return "redirect:/ConfirmationInfo";
+        this.shoppingCartService.addOrderToShoppingCart(username, order.getId());
+        return "confirmationInfo";
     }
 }

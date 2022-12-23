@@ -9,5 +9,4 @@ import java.util.List;
 public interface AuthenticationService {
 
     User login(String username, String password);
-    User register(UserFullName fullName, String username, String password, String repeatPassword, LocalDate dateOfBirth);
 }

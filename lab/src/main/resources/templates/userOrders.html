@@ -35,8 +35,7 @@
 <body>
 <div class="container">
     <div>
-        <h2>Orders for <span th:text="${session.user.getFullName().getName()
-         + ' ' + session.user.getFullName().getSurname()}"></span></h2>
+        <h2>Orders for <span th:text="${#request.getRemoteUser()}"></span></h2>
     </div>
     <table class="pure-table">
         <thead>

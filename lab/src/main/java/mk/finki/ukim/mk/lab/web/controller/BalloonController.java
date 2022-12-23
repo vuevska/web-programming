@@ -3,8 +3,7 @@ package mk.finki.ukim.mk.lab.web.controller;
 import mk.finki.ukim.mk.lab.model.Balloon;
 import mk.finki.ukim.mk.lab.service.BalloonService;
 import mk.finki.ukim.mk.lab.service.ManufacturerService;
-import mk.finki.ukim.mk.lab.service.OrderService;
-import mk.finki.ukim.mk.lab.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,16 +36,29 @@ public class BalloonController {
         return "listBalloons";
     }
 
+    @GetMapping("access_denied")
+    public String accessDeniedPage() {
+        return "access_denied";
+    }
+
     //save color
     @PostMapping("/save-color")
     public String saveBalloonColor(HttpServletRequest request) {
         String color = request.getParameter("color");
         request.getSession().setAttribute("color", color);
-        return "redirect:/selectBalloon";
+        return "selectBalloonSize";
+    }
+
+    @PostMapping("/save-size")
+    public String saveBalloonSize(HttpServletRequest request) {
+        String size = request.getParameter("size");
+        request.getSession().setAttribute("size", size);
+        return "deliveryInfo";
     }
 
     //add balloon
     @GetMapping("/add-form")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getAddBalloonPage(Model model) {
         /*List<Manufacturer> manufacturers = this.manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturers);*/
@@ -69,6 +81,7 @@ public class BalloonController {
 
     //edit balloon
     @GetMapping("/edit-form/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getEditBalloonPage(@PathVariable Long id, Model model) {
         if (this.balloonService.findById(id).isPresent()) {
             Balloon balloon = this.balloonService.findById(id).get();
@@ -82,6 +95,7 @@ public class BalloonController {
 
     //delete balloon
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteBalloon(@PathVariable Long id) {
         this.balloonService.deleteById(id);
         return "redirect:/balloons";

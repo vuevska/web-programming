@@ -1,12 +1,7 @@
 package mk.finki.ukim.mk.lab.service.impl;
 
-import mk.finki.ukim.mk.lab.model.Balloon;
 import mk.finki.ukim.mk.lab.model.Order;
-import mk.finki.ukim.mk.lab.model.ShoppingCart;
 import mk.finki.ukim.mk.lab.model.User;
-import mk.finki.ukim.mk.lab.model.exceptions.BalloonAlreadyInShoppingCartException;
-import mk.finki.ukim.mk.lab.model.exceptions.BalloonNotFoundException;
-import mk.finki.ukim.mk.lab.model.exceptions.UserNotFoundException;
 import mk.finki.ukim.mk.lab.model.exceptions.UserWithIdNotFoundException;
 import mk.finki.ukim.mk.lab.repository.jpa.BalloonRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.OrderRepository;

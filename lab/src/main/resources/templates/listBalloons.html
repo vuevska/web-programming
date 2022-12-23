@@ -93,39 +93,53 @@
                 <th scope="col" colspan="2" style="text-align: center">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Manufacturer</th>
-                <th scope="col" colspan="2" style="text-align: center">Modify</th>
+                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                    <th scope="col" colspan="2" style="text-align: center">Modify</th>
+                </th:block>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="balloon :${balloons}">
+            <tr th:each="balloon :${balloons}" class="balloons">
                 <td>
                     <label>
-                        <input type="radio" name="color" th:id="${balloon.getId()}" th:value="${balloon.getName()}" form="submit-color-form">
+                        <input type="radio" name="color" th:id="${balloon.getId()}" th:value="${balloon.getName()}"
+                               form="submit-color-form">
                     </label>
                 </td>
                 <td th:text="${balloon.getName()}"></td>
                 <td th:text="${balloon.getDescription()}"></td>
                 <td th:text="${balloon.getManufacturer().getName()}"></td>
-                <td th:class="text-right">
-                    <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}"
-                       class="btn btn-info edit-balloon">
-                        <span>Edit</span>
-                    </a>
-                </td>
-                <td>
-                    <form id="delete-form" th:method="delete" th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">
-                        <button type="submit" class="btn btn-danger delete-balloon" form="delete-form">Delete</button>
-                    </form>
-                </td>
+                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                    <td th:class="text-right">
+                        <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}"
+                           class="btn btn-info edit-balloon">
+                            <span>Edit</span>
+                        </a>
+                    </td>
+
+
+                    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                        <td>
+                            <form id="delete-form" th:method="delete"
+                                  th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">
+                                <button type="submit" class="btn btn-danger delete-balloon" form="delete-form">Delete
+                                </button>
+                            </form>
+                        </td>
+                    </th:block>
+
+                </th:block>
             </tr>
             </tbody>
         </table>
         <div id="div-submit">
             <input type="submit" th:value="Submit" id="submit" form="submit-color-form">
         </div>
-        <div id="add-new">
-            <a href="/balloons/add-form" class="btn btn-light">Add new balloon</a>
-        </div>
+        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+            <div id="add-new">
+                <a href="/balloons/add-form" class="btn btn-light add-balloon">Add new balloon</a>
+            </div>
+        </th:block>
         <div th:if="${hasError}" th:class="error">
             <div th:text="${error}"></div>
         </div>

@@ -1,9 +1,11 @@
 package mk.finki.ukim.mk.lab.web.controller;
 
 import mk.finki.ukim.mk.lab.model.UserFullName;
+import mk.finki.ukim.mk.lab.model.enumerations.Role;
 import mk.finki.ukim.mk.lab.model.exceptions.InvalidArgumentsException;
 import mk.finki.ukim.mk.lab.model.exceptions.PasswordsDoNotMatchException;
 import mk.finki.ukim.mk.lab.service.AuthenticationService;
+import mk.finki.ukim.mk.lab.service.UserService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +21,11 @@ import java.time.LocalDate;
 public class RegisterController {
 
     private final AuthenticationService authenticationService;
+    private final UserService userService;
 
-    public RegisterController(AuthenticationService authenticationService) {
+    public RegisterController(AuthenticationService authenticationService, UserService userService) {
         this.authenticationService = authenticationService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -41,12 +45,13 @@ public class RegisterController {
                            @RequestParam String repeatPassword,
                            @RequestParam
                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                               LocalDate dateOfBirth) {
+                               LocalDate dateOfBirth,
+                           @RequestParam Role role) {
         try {
             UserFullName fullName = new UserFullName();
             fullName.setName(name);
             fullName.setSurname(surname);
-            this.authenticationService.register(fullName, username, password, repeatPassword, dateOfBirth);
+            this.userService.register(fullName, username, password, repeatPassword, dateOfBirth, role);
             return "redirect:/login";
         } catch (PasswordsDoNotMatchException | InvalidArgumentsException e) {
             return "redirect:/register?error=" + e.getMessage();

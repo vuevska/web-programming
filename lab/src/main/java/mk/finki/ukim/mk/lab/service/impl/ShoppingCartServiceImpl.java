@@ -1,11 +1,9 @@
 package mk.finki.ukim.mk.lab.service.impl;
 
-import mk.finki.ukim.mk.lab.model.Balloon;
 import mk.finki.ukim.mk.lab.model.Order;
 import mk.finki.ukim.mk.lab.model.ShoppingCart;
 import mk.finki.ukim.mk.lab.model.User;
 import mk.finki.ukim.mk.lab.model.exceptions.*;
-import mk.finki.ukim.mk.lab.repository.jpa.BalloonRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.OrderRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.ShoppingCartRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.UserRepository;

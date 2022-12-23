@@ -29,7 +29,7 @@
     </header>
     <section>
         <h2>Choose balloon size:</h2>
-        <form th:action="@{/selectBalloon}" th:method="POST">
+        <form th:action="@{'/balloons/save-size'}" th:method="post">
             <label>
                 <input type="radio" name="size" value="Small">
             </label> Small <br/>

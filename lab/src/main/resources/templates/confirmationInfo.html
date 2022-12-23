@@ -58,7 +58,7 @@
             <tr>
                 <td><b>Client Name </b></td>
                 <td>
-                    <div th:text="${session.user.getUsername()}"></div>
+                    <div th:text="${#request.getRemoteUser()}"></div>
                 </td>
             </tr>
             <!--<tr>
@@ -70,13 +70,13 @@
             <tr class="pure-table-odd">
                 <td><b>Client IP Address</b></td>
                 <td>
-                    <div th:text="${IPAddress}"></div>
+                    <div th:text="${#request.getRemoteAddr()}"></div>
                 </td>
             </tr>
             <tr>
                 <td><b>Client Browser</b></td>
                 <td>
-                    <div th:text="${clientAgent}"></div>
+                    <div th:text="${#request.getHeader('User-Agent')}"></div>
                 </td>
             </tr>
             <tr class="pure-table-odd">
